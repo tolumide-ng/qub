@@ -1,6 +1,6 @@
 import * as React from "react";
 import { AuthInputDef } from "../../../../commonTypes";
-import InputForm from "../../atoms/AppInput";
+import { InputForm } from "../../atoms/AppInput";
 import style from "./index.module.css";
 
 interface SignupDef {
@@ -26,6 +26,7 @@ export const Signup = (props: SignupDef) => {
                         inputName={option.name}
                         inputValue={props.user[option.name]}
                         onChange={props.handleChnage}
+                        inputLabelName={option.label}
                     />
                 ))}
             </form>
