@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Signup } from "../../UI/organisms/SignUp";
+import { Signup } from "../../UI/organisms/Signup";
 import { QubAuthTmp } from "../../UI/templates/QubAuthTmp";
 import styles from "./index.module.css";
 
