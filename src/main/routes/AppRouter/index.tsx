@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, withRouter } from "react-router";
+import { AllBrands } from "../../components/Pages/AllBrands";
 import ErrorBoundary from "../../components/Pages/ErrorBoundary";
 import { LandingPage } from "../../components/Pages/LandingPage";
 import { LoadingPage } from "../../components/Pages/LoadingPage";
@@ -38,6 +39,11 @@ const AppRouter = () => {
                             <Route path="/login" exact>
                                 <LoginPage />
                             </Route>
+
+                            <Route path="/brands" exact>
+                                <AllBrands />
+                            </Route>
+
                             {/* <Route path="/">
                                 <NotFoundPage />
                             </Route> */}

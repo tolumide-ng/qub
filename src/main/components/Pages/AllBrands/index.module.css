@@ -1,0 +1,17 @@
+.allB {
+    padding: 0 3rem;
+}
+
+.allBTop {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.allBBody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

@@ -25,4 +25,8 @@ export interface AuthInputDef {
     type: string;
 }
 
-
+export interface SpecificBrandDef {
+    brandName: string;
+    balance: number;
+    following: boolean;
+}
