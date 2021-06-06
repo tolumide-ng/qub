@@ -54,6 +54,7 @@ export const SignupPage = () => {
                         user={user}
                     />
                 }
+                bodyTitle="Create your Account"
             />
         </article>
     );

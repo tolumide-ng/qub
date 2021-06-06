@@ -20,7 +20,7 @@ interface InputProps {
 export const InputForm = (props: InputProps) => {
     return (
         <>
-            <div className={`input-form__container ${props.inputContClass}`}>
+            <div className={props.inputContClass}>
                 {props?.inputLabelName && (
                     <label
                         className={props.inputLabelClass}

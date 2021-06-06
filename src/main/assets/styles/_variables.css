@@ -8,6 +8,9 @@
     --color-white: #fff;
     --color-black: #000;
     --color-scorpion: #5f5f5f;
+    --color-black-20: #00000020;
+    --color-cerulean: #00a0e3;
+    --color-cerise: #d82a90;
 }
 
 @media screen and (max-width: 1024px) {
