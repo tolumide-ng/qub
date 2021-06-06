@@ -18,3 +18,11 @@ export type ForAxiosDefs =
     | "unlink"
     | "UNLINK"
     | undefined;
+
+export interface AuthInputDef {
+    label: string;
+    name: string;
+    type: string;
+}
+
+
