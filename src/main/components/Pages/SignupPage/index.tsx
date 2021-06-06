@@ -48,7 +48,7 @@ export const SignupPage = () => {
             <QubAuthTmp
                 body={
                     <Signup
-                        handleChnage={handleChange}
+                        handleChange={handleChange}
                         handleSubmit={handleSubmit}
                         options={options}
                         user={user}

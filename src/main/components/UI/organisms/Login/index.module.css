@@ -1,0 +1,42 @@
+.login {
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginCont {
+    margin-bottom: 2rem;
+}
+
+.loginInput {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.loginLabel {
+    font-size: 0.7rem;
+    color: var(--color-scorpion);
+}
+
+.loginActions {
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    display: flex;
+}
+
+.loginSignup {
+    border: none;
+    background: none;
+    color: var(--color-cerulean);
+}
+
+.loginSubmit {
+    background: var(--color-cerulean);
+    color: var(--color-white);
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.3125rem;
+}

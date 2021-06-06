@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from "react-router";
 import ErrorBoundary from "../../components/Pages/ErrorBoundary";
 import { LandingPage } from "../../components/Pages/LandingPage";
 import { LoadingPage } from "../../components/Pages/LoadingPage";
+import { LoginPage } from "../../components/Pages/LoginPage";
 import { SignupPage } from "../../components/Pages/SignupPage";
 // import { NotFoundPage } from "../../components/Pages/NotFoundPage";
 import { setDropDownAction } from "../../store/modules/dropDown/actions";
@@ -32,6 +33,10 @@ const AppRouter = () => {
                             <Route path="/" exact>
                                 {/* <LandingPage /> */}
                                 <SignupPage />
+                            </Route>
+
+                            <Route path="/login" exact>
+                                <LoginPage />
                             </Route>
                             {/* <Route path="/">
                                 <NotFoundPage />
