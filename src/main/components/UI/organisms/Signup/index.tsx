@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { AuthInputDef } from "../../../../commonTypes";
 import { InputForm } from "../../atoms/AppInput";
 import { Button } from "../../atoms/Button";
@@ -7,7 +8,7 @@ import style from "./index.module.css";
 interface SignupDef {
     options: Array<AuthInputDef>;
     handleSubmit: (e: React.FormEvent) => void;
-    handleChnage: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     user: {
         [key: string]: string;
     };
@@ -26,18 +27,19 @@ export const Signup = (props: SignupDef) => {
                         inputContClass={""}
                         inputName={option.name}
                         inputValue={props.user[option.name]}
-                        onChange={props.handleChnage}
+                        onChange={props.handleChange}
                         inputLabelName={option.label}
                         inputLabelClass={style.signupLabel}
                     />
                 ))}
 
                 <div className={style.signupActions}>
-                    <Button
-                        buttonText="Login"
-                        buttonClass={`appButton ${style.signupLogin}`}
-                        buttonType="button"
-                    />
+                    <Link
+                        to="/login"
+                        className={`appButton ${style.signupLogin}`}
+                    >
+                        Login
+                    </Link>
 
                     <Button
                         buttonText="Sign up"
