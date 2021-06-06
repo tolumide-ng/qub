@@ -4,7 +4,7 @@ import style from "./index.module.css";
 
 export const AllBrands = () => {
     return (
-        <article>
+        <article className={style.allB}>
             <div className={style.allBTop}>
                 <h1 className={style.allBTitle}>Qub Brands</h1>
             </div>

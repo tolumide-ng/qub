@@ -16,16 +16,19 @@ export const BrandCard = () => {
             </div>
 
             <div className={style.brandBottom}>
-                <div className={style.brandLeft}>
-                    <p className={style.brandTitle}>Brand Balance</p>
-                    <p className={style.brandValue}>$200</p>
-                </div>
-                <div className={style.brandRight}>
-                    <Button
-                        buttonText="follow"
-                        buttonClass={`appButton ${style.brandButton}`}
-                        buttonType="button"
-                    />
+                <p className={style.brandName}>Alan and Breed</p>
+                <div className={style.brandActions}>
+                    <div className={style.brandLeft}>
+                        <p className={style.brandTitle}>Brand Balance</p>
+                        <p className={style.brandValue}>$200</p>
+                    </div>
+                    <div className={style.brandRight}>
+                        <Button
+                            buttonText="follow"
+                            buttonClass={`appButton ${style.brandButton}`}
+                            buttonType="button"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

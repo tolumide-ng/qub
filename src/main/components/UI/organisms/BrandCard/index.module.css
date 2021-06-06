@@ -5,6 +5,7 @@
     border-radius: 0.25rem;
     margin-bottom: 1.5rem;
     padding: 1rem;
+    margin-right: 0.5rem;
 }
 
 .brandAvi {
@@ -20,6 +21,11 @@
 }
 
 .brandBottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.brandActions {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
@@ -46,4 +52,8 @@
     color: var(--color-white);
     border: none;
     border-radius: 0.3125rem;
+}
+
+.brandName {
+    text-align: center;
 }
