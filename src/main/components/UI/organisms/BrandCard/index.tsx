@@ -2,13 +2,14 @@ import * as React from "react";
 import { Button } from "../../atoms/Button";
 import { LoadImg } from "../../atoms/LoadImg";
 import style from "./index.module.css";
+import placeholder from "../../../../assets/images/placeholder.svg";
 
 export const BrandCard = () => {
     return (
         <div className={style.brand}>
             <div className={style.brandTop}>
                 <LoadImg
-                    loadImg=""
+                    loadImg={placeholder}
                     loadAlt="image showing the brand"
                     loadClass={style.brandAvi}
                 />

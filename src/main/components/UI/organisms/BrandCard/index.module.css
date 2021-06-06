@@ -1,0 +1,49 @@
+.brand {
+    border: 1px solid var(--color-scorpion);
+    width: 15rem;
+    height: 15rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+}
+
+.brandAvi {
+    height: 8rem;
+    width: 8rem;
+}
+
+.brandTop {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brandBottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.brandLeft {
+}
+
+.brandTitle {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.brandValue {
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-top: 0.5rem;
+}
+
+.brandButton {
+    padding: 0.35rem 1rem;
+    background-color: var(--color-cerulean);
+    color: var(--color-white);
+    border: none;
+    border-radius: 0.3125rem;
+}
