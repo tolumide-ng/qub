@@ -22,6 +22,8 @@ const options = [
 
 export const Signup = () => {
     return <article>
-        
+        {
+            // options.map((option) => )
+        }
     </article>;
 };
