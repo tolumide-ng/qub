@@ -1,0 +1,37 @@
+.qtmp {
+    width: 28.125rem;
+    border-radius: 0.9375rem;
+    box-shadow: 0px 7px 14px var(--color-black-20);
+}
+
+.qtmpHead {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 0.125rem solid;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border-image: linear-gradient(
+            to right,
+            var(--color-cerulean),
+            var(--color-cerise)
+        )
+        1;
+    border-width: 0 0 0.125rem 0;
+}
+
+.qtmpTitle {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.qtmpBody {
+    padding: 0 2.5rem 2.5rem 2.5rem;
+}
+
+.qtmpBodyTitle {
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}

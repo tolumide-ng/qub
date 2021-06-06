@@ -11,43 +11,16 @@ a {
     text-decoration: none;
     color: inherit;
 }
-
-@font-face {
-    font-family: goldenplains;
-    src: url("../fonts/GoldenPlainsDemo.ttf");
+.appInput {
+    height: 2rem;
+    border: 1px solid var(--color-scorpion);
+    border-radius: 0.3125rem;
 }
 
-@font-face {
-    font-family: marcellus;
-    src: url("../fonts/Marcellus-Regular.ttf");
+.appButton {
+    cursor: pointer;
 }
 
-@font-face {
-    font-family: helvet;
-    src: url("../fonts/Helvetica-Font/Helvetica.ttf");
-}
-
-@font-face {
-    font-family: helvetbold;
-    src: url("../fonts/Helvetica-Font/Helvetica-Bold.ttf");
-}
-
-@font-face {
-    font-family: helvetboldob;
-    src: url("../fonts/Helvetica-Font/Helvetica-BoldOblique.ttf");
-}
-
-@font-face {
-    font-family: helvetlight;
-    src: url("../fonts/Helvetica-Font/helvetica-light-587ebe5a59211.ttf");
-}
-
-@font-face {
-    font-family: helvetoblique;
-    src: url("../fonts/Helvetica-Font/Helvetica-Oblique.ttf");
-}
-
-@font-face {
-    font-family: helvetultra;
-    src: url("../fonts//Helvetica-Font/HelveticaUltraLt.ttf");
+.appButton:active {
+    transform: scale(0.98);
 }
