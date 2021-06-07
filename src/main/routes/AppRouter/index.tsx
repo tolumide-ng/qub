@@ -6,7 +6,9 @@ import ErrorBoundary from "../../components/Pages/ErrorBoundary";
 import { LandingPage } from "../../components/Pages/LandingPage";
 import { LoadingPage } from "../../components/Pages/LoadingPage";
 import { LoginPage } from "../../components/Pages/LoginPage";
+import { NotFoundPage } from "../../components/Pages/NotFoundPage";
 import { SignupPage } from "../../components/Pages/SignupPage";
+import { SpecificBrandPage } from "../../components/Pages/SpecificBrandPage";
 // import { NotFoundPage } from "../../components/Pages/NotFoundPage";
 import { setDropDownAction } from "../../store/modules/dropDown/actions";
 import { RootState } from "../../store/modules/types";
@@ -44,9 +46,13 @@ const AppRouter = () => {
                                 <AllBrands />
                             </Route>
 
-                            {/* <Route path="/">
+                            <Route path="/brand/:id" exact>
+                                <SpecificBrandPage />
+                            </Route>
+
+                            <Route path="*">
                                 <NotFoundPage />
-                            </Route> */}
+                            </Route>
                         </Switch>
                     </Suspense>
                 </ErrorBoundary>

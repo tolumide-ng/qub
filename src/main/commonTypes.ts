@@ -29,4 +29,5 @@ export interface SpecificBrandDef {
     brandName: string;
     balance: number;
     following: boolean;
+    index: number;
 }

@@ -15,6 +15,7 @@ export const generateBrands = ((): Array<SpecificBrandDef> => {
                 brandName: combined,
                 balance: i * combined.length,
                 following: false,
+                index: i,
             });
             combined = "";
         }
