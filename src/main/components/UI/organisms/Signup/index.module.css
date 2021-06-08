@@ -20,7 +20,7 @@
 
 .signupActions {
     display: flex;
-    grid-row: 3;
+    grid-row: 4;
     grid-column: 1 / span 2;
     justify-content: space-between;
     align-items: center;

@@ -8,18 +8,32 @@ const options = [
         label: "First name",
         name: "firstName",
         type: "text",
+        required: true,
     },
     {
         label: "Last name",
         name: "lastName",
         type: "text",
+        required: true,
     },
     {
         label: "Email address",
         name: "email",
         type: "email",
+        required: true,
     },
-    { label: "Password", name: "password", type: "password" },
+    {
+        label: "Password",
+        name: "password",
+        type: "password",
+        required: true,
+    },
+    {
+        label: "Brand Name",
+        name: "brand",
+        type: "brand",
+        required: true,
+    },
 ];
 
 export const SignupPage = () => {
@@ -28,6 +42,7 @@ export const SignupPage = () => {
         lastName: "",
         email: "",
         password: "",
+        brand: "",
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

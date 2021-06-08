@@ -23,6 +23,7 @@ export interface AuthInputDef {
     label: string;
     name: string;
     type: string;
+    required?: boolean;
 }
 
 export interface SpecificBrandDef {
