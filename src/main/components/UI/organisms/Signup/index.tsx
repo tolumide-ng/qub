@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { AuthInputDef } from "../../../../commonTypes";
+import { AuthInputDef, StateType } from "../../../../commonTypes";
 import { InputForm } from "../../atoms/AppInput";
 import { Button } from "../../atoms/Button";
 import style from "./index.module.css";
@@ -12,6 +12,8 @@ interface SignupDef {
     user: {
         [key: string]: string;
     };
+    error: string | null;
+    loadStatus: StateType;
 }
 
 export const Signup = (props: SignupDef) => {
@@ -33,11 +35,10 @@ export const Signup = (props: SignupDef) => {
                     />
                 ))}
 
+                <small className="appError">{props.error}</small>
+
                 <div className={style.signupActions}>
-                    <Link
-                        to="/login"
-                        className={`appButton ${style.signupLogin}`}
-                    >
+                    <Link to="/" className={`appButton ${style.signupLogin}`}>
                         Login
                     </Link>
 
@@ -45,6 +46,7 @@ export const Signup = (props: SignupDef) => {
                         buttonText="Sign up"
                         buttonClass={`appButton ${style.signupSubmit}`}
                         buttonType="submit"
+                        buttonDisabled={props.loadStatus === "loading"}
                     />
                 </div>
             </form>

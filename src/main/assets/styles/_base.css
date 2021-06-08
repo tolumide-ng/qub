@@ -24,3 +24,10 @@ a {
 .appButton:active {
     transform: scale(0.98);
 }
+
+.appError {
+    color: var(--color-tia-maria);
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+}
