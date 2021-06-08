@@ -14,7 +14,6 @@ export const authenticateUser = (data: UserDef): object => {
 
 export const createNewUser = (data: UserInfoDef): object => {
     const userExists = allUsers.find((user) => user.email === data.email);
-    console.log("DOES THE USER EXKST???????", userExists);
 
     if (userExists) {
         throw Error("Email already exists");

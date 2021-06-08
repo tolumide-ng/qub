@@ -11,8 +11,7 @@ export const ProtectedRoute = (props: RoutePropDef) => {
     return (
         <>
             {selector.status === "success" &&
-            selector.user?.role === "user" &&
-            props.type === "user" ? (
+            props.type === selector.user?.role ? (
                 <Route exact={props.exact} path={props.path}>
                     {props.component}
                 </Route>
@@ -20,16 +19,6 @@ export const ProtectedRoute = (props: RoutePropDef) => {
                 <Route>
                     <LoginPage />
                 </Route>
-            )}
-
-            {selector.status === "success" &&
-            selector.user?.role === "admin" &&
-            props.type === "admin" ? (
-                <Route>
-                    <LoginPage />
-                </Route>
-            ) : (
-                <></>
             )}
         </>
     );
