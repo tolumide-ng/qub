@@ -34,10 +34,7 @@ export const Signup = (props: SignupDef) => {
                 ))}
 
                 <div className={style.signupActions}>
-                    <Link
-                        to="/login"
-                        className={`appButton ${style.signupLogin}`}
-                    >
+                    <Link to="/" className={`appButton ${style.signupLogin}`}>
                         Login
                     </Link>
 

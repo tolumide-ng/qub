@@ -36,7 +36,11 @@ const options = [
     },
 ];
 
-export const SignupPage = () => {
+interface SignupPageDef {
+    brands?: boolean;
+}
+
+export const SignupPage = (props: SignupPageDef) => {
     const [user, setUser] = React.useState<{ [key: string]: string }>({
         firstName: "",
         lastName: "",
@@ -65,7 +69,7 @@ export const SignupPage = () => {
                     <Signup
                         handleChange={handleChange}
                         handleSubmit={handleSubmit}
-                        options={options}
+                        options={props?.brands ? options : options.slice(0, 4)}
                         user={user}
                     />
                 }

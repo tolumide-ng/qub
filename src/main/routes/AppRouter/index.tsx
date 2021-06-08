@@ -35,12 +35,16 @@ const AppRouter = () => {
                     <Suspense fallback={<LoadingPage />}>
                         <Switch>
                             <Route path="/" exact>
-                                {/* <LandingPage /> */}
+                                <LoginPage />
+                            </Route>
+
+                            <Route path="/signup" exact>
                                 <SignupPage />
                             </Route>
 
-                            <Route path="/login" exact>
-                                <LoginPage />
+                            <Route path="/signup/brand" exact>
+                                {/* <LandingPage /> */}
+                                <SignupPage brands={true} />
                             </Route>
 
                             <Route path="/brands" exact>
