@@ -1,20 +1,46 @@
 import * as React from "react";
+import { Button } from "../../atoms/Button";
 import style from "./index.module.css";
 
 export const BrandUsers = () => {
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Customer</th>
-                    <th>Loyalty points</th>
+        <table className={style.but}>
+            <caption className={style.butCaption}>
+                Table displaying brand users and their loyalty points
+            </caption>
+            <thead className={style.butHead}>
+                <tr className={style.butRow}>
+                    <th className={style.butCell}>S/N</th>
+                    <th className={style.butCell}>Customer</th>
+                    <th className={style.butCell}>Loyalty points</th>
+                    <th className={style.butCell}>Actions</th>
                 </tr>
             </thead>
 
-            <tbody>
-                <tr>
-                    <td>firstName lastName</td>
-                    <td>290 points</td>
+            <tbody className={style.butBody}>
+                <tr className={style.butRow}>
+                    <td className={style.butCell}>1</td>
+                    <td className={style.butCell}>firstName lastName</td>
+                    <td className={style.butCell}>290 points</td>
+                    <td className={style.butCell}>
+                        <Button buttonClass="" buttonText="Award Points" />
+                    </td>
+                </tr>
+                <tr className={style.butRow}>
+                    <td className={style.butCell}>2</td>
+                    <td className={style.butCell}>firstName lastName</td>
+                    <td className={style.butCell}>290 points</td>
+                    <td className={style.butCell}>
+                        <Button buttonClass="" buttonText="Award Points" />
+                    </td>
+                </tr>
+                <tr className={style.butRow}>
+                    <td className={style.butCell}>3</td>
+                    <td className={style.butCell}>firstName lastName</td>
+                    <td className={style.butCell}>290 points</td>
+                    <td className={style.butCell}>
+                        <Button buttonClass="" buttonText="Award Points" />
+                    </td>
                 </tr>
             </tbody>
         </table>
