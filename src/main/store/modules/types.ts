@@ -1,11 +1,18 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { RootStateDef } from ".";
-import { ForAxiosDefs } from "../../commonTypes";
+import { ForAxiosDefs, StateType } from "../../commonTypes";
 
 export interface RootState {
     dropDownReducer: {
         display: boolean;
+    };
+
+    authReducer: {
+        authError: string | null;
+        status: StateType;
+        user: {};
+        isAuthenticated: boolean;
     };
 }
 
