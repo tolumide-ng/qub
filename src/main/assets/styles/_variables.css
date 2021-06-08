@@ -11,6 +11,8 @@
     --color-black-20: #00000020;
     --color-cerulean: #00a0e3;
     --color-cerise: #d82a90;
+
+    --app-br: 0.3125rem;
 }
 
 @media screen and (max-width: 1024px) {

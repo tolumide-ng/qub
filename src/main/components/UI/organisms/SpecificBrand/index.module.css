@@ -1,0 +1,19 @@
+.specbBottom {
+    margin-top: 1rem;
+}
+
+.specbBox {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    align-items: flex-end;
+}
+
+.specbButton {
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    background: var(--color-cerulean);
+    border-radius: var(--app-br);
+    color: var(--color-white);
+}

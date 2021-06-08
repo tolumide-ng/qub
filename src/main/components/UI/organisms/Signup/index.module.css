@@ -20,7 +20,7 @@
 
 .signupActions {
     display: flex;
-    grid-row: 3;
+    grid-row: 4;
     grid-column: 1 / span 2;
     justify-content: space-between;
     align-items: center;
@@ -38,7 +38,7 @@
     color: var(--color-white);
     border: none;
     padding: 0.5rem 1.25rem;
-    border-radius: 0.3125rem;
+    border-radius: var(--app-br);
 }
 
 @media screen and (max-width: 745px) {

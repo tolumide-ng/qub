@@ -21,7 +21,7 @@ export const Signup = (props: SignupDef) => {
                 {props.options.map((option) => (
                     <InputForm
                         inputType={option.type}
-                        inputRequired={true}
+                        inputRequired={option?.required ?? false}
                         inputClassName={`appInput ${style.signupInput}`}
                         inputPlaceholder=""
                         inputContClass={""}

@@ -2,11 +2,14 @@ import React, { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, withRouter } from "react-router";
 import { AllBrands } from "../../components/Pages/AllBrands";
+import { BrandUsersPage } from "../../components/Pages/BrandUsersPage";
 import ErrorBoundary from "../../components/Pages/ErrorBoundary";
 import { LandingPage } from "../../components/Pages/LandingPage";
 import { LoadingPage } from "../../components/Pages/LoadingPage";
 import { LoginPage } from "../../components/Pages/LoginPage";
+import { NotFoundPage } from "../../components/Pages/NotFoundPage";
 import { SignupPage } from "../../components/Pages/SignupPage";
+import { SpecificBrandPage } from "../../components/Pages/SpecificBrandPage";
 // import { NotFoundPage } from "../../components/Pages/NotFoundPage";
 import { setDropDownAction } from "../../store/modules/dropDown/actions";
 import { RootState } from "../../store/modules/types";
@@ -44,9 +47,17 @@ const AppRouter = () => {
                                 <AllBrands />
                             </Route>
 
-                            {/* <Route path="/">
+                            <Route path="/brand/users" exact>
+                                <BrandUsersPage />
+                            </Route>
+
+                            <Route path="/brand/:id" exact>
+                                <SpecificBrandPage />
+                            </Route>
+
+                            <Route path="*">
                                 <NotFoundPage />
-                            </Route> */}
+                            </Route>
                         </Switch>
                     </Suspense>
                 </ErrorBoundary>
