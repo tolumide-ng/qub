@@ -1,18 +1,14 @@
 import React, { Suspense, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, useLocation, withRouter } from "react-router";
+import { Route, Switch, useLocation } from "react-router";
 import { RoutePropDef } from "../../commonTypes";
 import { AllBrands } from "../../components/Pages/AllBrands";
 import { BrandUsersPage } from "../../components/Pages/BrandUsersPage";
 import ErrorBoundary from "../../components/Pages/ErrorBoundary";
-import { LandingPage } from "../../components/Pages/LandingPage";
 import { LoadingPage } from "../../components/Pages/LoadingPage";
 import { LoginPage } from "../../components/Pages/LoginPage";
 import { NotFoundPage } from "../../components/Pages/NotFoundPage";
 import { SignupPage } from "../../components/Pages/SignupPage";
 import { SpecificBrandPage } from "../../components/Pages/SpecificBrandPage";
-// import { NotFoundPage } from "../../components/Pages/NotFoundPage";
-import { RootState } from "../../store/modules/types";
 import { ProtectedRoute } from "../ProtectedRoute";
 import "./index.css";
 
@@ -75,13 +71,21 @@ export const allRoutes: Array<RoutePropDef> = [
     },
 ];
 
-const AppRouter = () => {
-    const dispatch = useDispatch();
+const getName = (url: string) => {
+    if (url) {
+        return `${url[0]?.toUpperCase()}${url?.slice(1)}`;
+    } else {
+        return "Home";
+    }
+};
 
+const AppRouter = () => {
     const location = useLocation();
     const currentLocation = location.pathname.split("/")[1];
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        document.title = getName(currentLocation);
+    }, [currentLocation]);
 
     return (
         <div className="appwide">
