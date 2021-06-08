@@ -32,3 +32,18 @@ export interface SpecificBrandDef {
     following: boolean;
     index: number;
 }
+
+export type StateType = "rest" | "loading" | "failure" | "success";
+
+export interface UserDef {
+    email: string;
+    password: string;
+}
+
+export interface UserInfoDef {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    role: string;
+}
