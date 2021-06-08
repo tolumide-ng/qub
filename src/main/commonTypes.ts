@@ -47,3 +47,14 @@ export interface UserInfoDef {
     password: string;
     role: string;
 }
+
+export type RoutesType = "admin" | "user" | "all";
+
+export interface RoutePropDef {
+    path: string;
+    component: JSX.Element;
+    type: RoutesType;
+    exact: boolean;
+    title: string;
+    isProtected: boolean;
+}

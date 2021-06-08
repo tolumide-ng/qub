@@ -1,6 +1,7 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, withRouter } from "react-router";
+import { Route, Switch, useLocation, withRouter } from "react-router";
+import { RoutePropDef } from "../../commonTypes";
 import { AllBrands } from "../../components/Pages/AllBrands";
 import { BrandUsersPage } from "../../components/Pages/BrandUsersPage";
 import ErrorBoundary from "../../components/Pages/ErrorBoundary";
@@ -11,57 +12,96 @@ import { NotFoundPage } from "../../components/Pages/NotFoundPage";
 import { SignupPage } from "../../components/Pages/SignupPage";
 import { SpecificBrandPage } from "../../components/Pages/SpecificBrandPage";
 // import { NotFoundPage } from "../../components/Pages/NotFoundPage";
-import { setDropDownAction } from "../../store/modules/dropDown/actions";
 import { RootState } from "../../store/modules/types";
+import { ProtectedRoute } from "../ProtectedRoute";
 import "./index.css";
+
+export const allRoutes: Array<RoutePropDef> = [
+    {
+        path: "/",
+        component: <LoginPage />,
+        type: "all",
+        exact: true,
+        title: "Login",
+        isProtected: false,
+    },
+    {
+        path: "/signup",
+        component: <SignupPage />,
+        type: "all",
+        exact: true,
+        title: "Signup",
+        isProtected: false,
+    },
+    {
+        path: "/signup/brand",
+        component: <SignupPage brands={true} />,
+        type: "all",
+        exact: true,
+        title: "Brand Signup",
+        isProtected: true,
+    },
+    {
+        path: "/brands",
+        component: <AllBrands />,
+        type: "user",
+        exact: true,
+        title: "Brands",
+        isProtected: true,
+    },
+    {
+        path: "/brand/users",
+        component: <BrandUsersPage />,
+        type: "admin",
+        exact: true,
+        title: "Brand Users",
+        isProtected: true,
+    },
+    {
+        path: "/brand/:id",
+        component: <SpecificBrandPage />,
+        type: "user",
+        exact: true,
+        title: "Brand",
+        isProtected: true,
+    },
+    {
+        path: "*",
+        component: <NotFoundPage />,
+        type: "all",
+        exact: true,
+        title: "Not Found",
+        isProtected: false,
+    },
+];
 
 const AppRouter = () => {
     const dispatch = useDispatch();
 
-    const dropDownSelector = useSelector(
-        (state: RootState) => state.dropDownReducer
-    );
+    const location = useLocation();
+    const currentLocation = location.pathname.split("/")[1];
 
-    const handleCloseDropDown = () => {
-        if (dropDownSelector.display) {
-            dispatch(setDropDownAction(true));
-        }
-    };
+    useEffect(() => {}, []);
 
     return (
-        <div className="appwide" onClick={handleCloseDropDown}>
+        <div className="appwide">
             <main className="appwide-container">
                 <ErrorBoundary>
                     <Suspense fallback={<LoadingPage />}>
                         <Switch>
-                            <Route path="/" exact>
-                                <LoginPage />
-                            </Route>
-
-                            <Route path="/signup" exact>
-                                <SignupPage />
-                            </Route>
-
-                            <Route path="/signup/brand" exact>
-                                {/* <LandingPage /> */}
-                                <SignupPage brands={true} />
-                            </Route>
-
-                            <Route path="/brands" exact>
-                                <AllBrands />
-                            </Route>
-
-                            <Route path="/brand/users" exact>
-                                <BrandUsersPage />
-                            </Route>
-
-                            <Route path="/brand/:id" exact>
-                                <SpecificBrandPage />
-                            </Route>
-
-                            <Route path="*">
-                                <NotFoundPage />
-                            </Route>
+                            {allRoutes.map((route, index) =>
+                                route?.isProtected ? (
+                                    <ProtectedRoute {...route} />
+                                ) : (
+                                    <Route
+                                        exact={route.exact}
+                                        path={route.path}
+                                        key={index}
+                                    >
+                                        {route.component}
+                                    </Route>
+                                )
+                            )}
                         </Switch>
                     </Suspense>
                 </ErrorBoundary>

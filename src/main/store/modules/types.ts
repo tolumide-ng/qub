@@ -1,7 +1,7 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { RootStateDef } from ".";
-import { ForAxiosDefs, StateType } from "../../commonTypes";
+import { ForAxiosDefs, StateType, UserInfoDef } from "../../commonTypes";
 
 export interface RootState {
     dropDownReducer: {
@@ -11,7 +11,7 @@ export interface RootState {
     authReducer: {
         authError: string | null;
         status: StateType;
-        user: {};
+        user: UserInfoDef;
         isAuthenticated: boolean;
     };
 }
