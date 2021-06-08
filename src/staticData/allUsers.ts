@@ -1,4 +1,6 @@
-export const allUsers = [
+import { UserInfoDef } from "../main/commonTypes";
+
+export const allUsers: Array<UserInfoDef> = [
     {
         firstName: "Akin",
         lastName: "Abass",
