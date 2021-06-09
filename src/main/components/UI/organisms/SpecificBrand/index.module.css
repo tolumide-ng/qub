@@ -17,3 +17,8 @@
     border-radius: var(--app-br);
     color: var(--color-white);
 }
+
+.specBack {
+    color: var(--color-cerise);
+    font-size: 0.9rem;
+}

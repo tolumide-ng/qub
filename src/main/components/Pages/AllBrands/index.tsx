@@ -25,10 +25,19 @@ export const AllBrands = () => {
         }
 
         if (selector.status === "success") {
-            console.log("SUCCESSSS?????????", selector.brands);
             setBrands(selector.brands);
         }
     }, [selector.status]);
+
+    const handleFollow = (id: number) => {
+        dispatch(
+            fetchBrandsAction({
+                path: "brands",
+                method: "PATCH",
+                payload: { id, email: authSelector.user.email },
+            })
+        );
+    };
 
     return (
         <article className={style.allB}>
@@ -46,6 +55,7 @@ export const AllBrands = () => {
                         following={brand.followers.includes(
                             authSelector.user.email
                         )}
+                        handleFollow={handleFollow}
                     />
                 ))}
             </div>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { SpecificBrandDef } from "../../../../commonTypes";
 import { Button } from "../../atoms/Button";
 import { LoadImg } from "../../atoms/LoadImg";
@@ -32,6 +33,9 @@ export const SpecificBrand = (props: SpecificBrandComponentDef) => {
                     />
                 </div>
             </div>
+            <Link to="/brands" className={style.specBack}>
+                Go Back
+            </Link>
         </div>
     );
 };

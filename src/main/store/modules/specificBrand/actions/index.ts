@@ -9,7 +9,6 @@ import {
 import {
     SpecificBrandFailureActionDef,
     SpecificBrandPendingActionDef,
-    SpecificBrandStateDef,
     SpecificBrandSuccessActionDef,
 } from "../types";
 
@@ -52,7 +51,9 @@ export const fetchSpecificBrandAction =
         try {
             dispatch(fetchSpecificBrandPending());
             const response = getSpecificBrand(props.payload as GetBrandDef);
-            dispatch(fetchSpecificBrandSuccess(response));
+            setTimeout(() => {
+                dispatch(fetchSpecificBrandSuccess(response));
+            }, 100);
         } catch (error) {
             dispatch(fetchSpecificBrandFailure(error.message));
         }

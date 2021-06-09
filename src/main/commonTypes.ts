@@ -62,3 +62,8 @@ export interface RoutePropDef {
 export interface GetBrandDef {
     id: number;
 }
+
+export interface FollowBrandDef {
+    id: number;
+    email: string;
+}

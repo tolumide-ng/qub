@@ -1,5 +1,4 @@
 import React, { Suspense, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, useLocation } from "react-router";
 import { RoutePropDef } from "../../commonTypes";
 import { AllBrands } from "../../components/Pages/AllBrands";
@@ -10,7 +9,6 @@ import { LoginPage } from "../../components/Pages/LoginPage";
 import { NotFoundPage } from "../../components/Pages/NotFoundPage";
 import { SignupPage } from "../../components/Pages/SignupPage";
 import { SpecificBrandPage } from "../../components/Pages/SpecificBrandPage";
-import { RootState } from "../../store/modules/types";
 import { ProtectedRoute } from "../ProtectedRoute";
 import "./index.css";
 
@@ -88,8 +86,6 @@ const AppRouter = () => {
     useEffect(() => {
         document.title = getName(currentLocation);
     }, [currentLocation]);
-
-    const dispatch = useDispatch();
 
     return (
         <div className="appwide">

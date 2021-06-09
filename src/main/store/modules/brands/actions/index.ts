@@ -1,5 +1,8 @@
-import { SpecificBrandDef } from "../../../../commonTypes";
-import { getAllBrands } from "../../../../utilities/helpers/mockApiCalls";
+import { FollowBrandDef, SpecificBrandDef } from "../../../../commonTypes";
+import {
+    followSpecificBrand,
+    getAllBrands,
+} from "../../../../utilities/helpers/mockApiCalls";
 import { AppThunk, StoreActionPropsDefs } from "../../types";
 import {
     BRANDS_FAILURE,
@@ -59,6 +62,14 @@ export const fetchBrandsAction =
     async (dispatch) => {
         try {
             dispatch(fetchBrandsPending);
+            if (props.method === "GET") {
+                //
+            }
+
+            if (props.method === "PATCH") {
+                followSpecificBrand(props.payload as FollowBrandDef);
+            }
+
             const response = getAllBrands();
             dispatch(fetchBrandsSuccess(response));
         } catch (error) {

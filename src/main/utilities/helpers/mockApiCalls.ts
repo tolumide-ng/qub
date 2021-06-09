@@ -5,6 +5,7 @@ import {
     UserDef,
     UserInfoDef,
     GetBrandDef,
+    FollowBrandDef,
 } from "../../commonTypes";
 
 export const authenticateUser = (data: UserDef): object => {
@@ -38,6 +39,19 @@ export const getSpecificBrand = (data: GetBrandDef): SpecificBrandDef => {
 
     if (theBrand) {
         return theBrand;
+    } else {
+        throw new Error("Brand does not exist");
+    }
+};
+
+export const followSpecificBrand = (data: FollowBrandDef) => {
+    const theBrand = allBrands.findIndex((brand) => brand.index === data.id);
+
+    if (theBrand >= 0) {
+        allBrands[theBrand] = {
+            ...allBrands[theBrand],
+            followers: [...allBrands[theBrand].followers, data.email],
+        };
     } else {
         throw new Error("Brand does not exist");
     }

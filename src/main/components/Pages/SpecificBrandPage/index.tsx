@@ -25,8 +25,6 @@ export const SpecificBrandPage = () => {
     const { id } = params;
     const theId = Number(id);
 
-    const history = useHistory();
-
     React.useEffect(() => {
         if (
             !["success"].includes(selector.status) ||
@@ -42,6 +40,7 @@ export const SpecificBrandPage = () => {
         }
 
         if (selector.status === "success" && selector.brand.index === theId) {
+            console.log("BECAUSE IT WAS/IS SUCCESS");
             setTheBrand(selector.brand);
         }
     }, [theId, selector.status]);
