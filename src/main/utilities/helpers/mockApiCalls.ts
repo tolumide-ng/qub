@@ -35,6 +35,7 @@ export const getAllBrands = (): Array<SpecificBrandDef> => {
 
 export const getSpecificBrand = (data: GetBrandDef): SpecificBrandDef => {
     const theBrand = generateBrands.find((brand) => brand.index === data.id);
+
     if (theBrand) {
         return theBrand;
     } else {

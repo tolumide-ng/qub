@@ -17,7 +17,9 @@ export const SpecificBrandPage = () => {
         (state: RootState) => state.specificBrandReducer
     );
     const dispatch = useDispatch();
-    const [theBrand, setTheBrand] = React.useState<SpecificBrandDef | {}>({});
+    const [theBrand, setTheBrand] = React.useState<
+        SpecificBrandDef | undefined
+    >(undefined);
 
     const params: ParamsDef = useParams();
     const { id } = params;
@@ -34,7 +36,7 @@ export const SpecificBrandPage = () => {
                 fetchSpecificBrandAction({
                     method: "GET",
                     path: "brand",
-                    payload: { id },
+                    payload: { id: theId },
                 })
             );
         }
@@ -46,16 +48,29 @@ export const SpecificBrandPage = () => {
 
     return (
         <article className={style.spBrand}>
-            {JSON.stringify(params)}
-            {selector.status !== "failure" ? (
+            {selector.status === "success" && theBrand ? (
                 <QubAuthTmp
-                    bodyTitle="Name of the brand"
-                    body={<SpecificBrand />}
+                    bodyTitle={`Brand Name: ${theBrand.brandName}`}
+                    body={<SpecificBrand {...theBrand} />}
                 />
             ) : (
+                <></>
+            )}
+
+            {selector.status === "failure" ? (
                 <div className="">
                     <p>BRAND DOES NOT EXIST</p>
                 </div>
+            ) : (
+                <></>
+            )}
+
+            {!["success", "failure"].includes(selector.status) ? (
+                <div className="">
+                    <p>LOADING</p>
+                </div>
+            ) : (
+                <></>
             )}
         </article>
     );
