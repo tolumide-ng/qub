@@ -84,7 +84,6 @@ const getName = (url: string) => {
 const AppRouter = () => {
     const location = useLocation();
     const currentLocation = location.pathname.split("/")[1];
-    const selector = useSelector((state: RootState) => state.authReducer);
 
     useEffect(() => {
         document.title = getName(currentLocation);
