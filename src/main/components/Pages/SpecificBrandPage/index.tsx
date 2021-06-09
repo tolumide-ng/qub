@@ -20,6 +20,7 @@ export const SpecificBrandPage = () => {
     const [theBrand, setTheBrand] = React.useState<
         SpecificBrandDef | undefined
     >(undefined);
+    const [disableButton, setDisableButton] = React.useState(false);
 
     const params: ParamsDef = useParams();
     const { id } = params;
@@ -40,17 +41,33 @@ export const SpecificBrandPage = () => {
         }
 
         if (selector.status === "success" && selector.brand.index === theId) {
-            console.log("BECAUSE IT WAS/IS SUCCESS");
             setTheBrand(selector.brand);
         }
     }, [theId, selector.status]);
+
+    const handleRedeemPoints = (id: number) => {
+        dispatch(
+            fetchSpecificBrandAction({
+                method: "PATCH",
+                path: "brand",
+                payload: { id: theId },
+            })
+        );
+        setDisableButton(true);
+    };
 
     return (
         <article className={style.spBrand}>
             {selector.status === "success" && theBrand ? (
                 <QubAuthTmp
                     bodyTitle={`Brand Name: ${theBrand.brandName}`}
-                    body={<SpecificBrand {...theBrand} />}
+                    body={
+                        <SpecificBrand
+                            {...theBrand}
+                            handleRedeemPoints={handleRedeemPoints}
+                            disableButton={disableButton}
+                        />
+                    }
                 />
             ) : (
                 <></>

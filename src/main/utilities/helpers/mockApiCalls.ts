@@ -56,3 +56,16 @@ export const followSpecificBrand = (data: FollowBrandDef) => {
         throw new Error("Brand does not exist");
     }
 };
+
+export const redeemPoints = (data: GetBrandDef) => {
+    const theBrand = allBrands.findIndex((brand) => brand.index === data.id);
+    if (theBrand >= 0) {
+        const toDeduct = allBrands[theBrand].balance * (75 / 100);
+        allBrands[theBrand] = {
+            ...allBrands[theBrand],
+            balance: allBrands[theBrand].balance - toDeduct,
+        };
+    } else {
+        throw new Error("Brand does not exist");
+    }
+};
