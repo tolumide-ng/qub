@@ -96,7 +96,7 @@ const AppRouter = () => {
                 <ErrorBoundary>
                     <Suspense fallback={<LoadingPage />}>
                         <Switch>
-                            {allRoutes.map((route, index) =>
+                            {allRoutes.map((route) =>
                                 route?.isProtected ? (
                                     <ProtectedRoute
                                         {...route}

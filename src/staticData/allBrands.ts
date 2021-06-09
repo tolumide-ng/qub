@@ -15,7 +15,10 @@ export const generateBrands = ((): Array<SpecificBrandDef> => {
             allBrands.push({
                 brandName: combined,
                 balance: i * combined.length,
-                followers: allUsers.slice(1, 4).map((user) => user.email),
+                followers:
+                    i % 2 === 0
+                        ? allUsers.slice(1, 4).map((user) => user.email)
+                        : [],
                 index: i,
             });
             combined = "";

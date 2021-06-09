@@ -4,6 +4,7 @@ import { LoadImg } from "../../atoms/LoadImg";
 import style from "./index.module.css";
 import placeholder from "../../../../assets/images/placeholder.svg";
 import { SpecificBrandDef } from "../../../../commonTypes";
+import { Link } from "react-router-dom";
 
 interface BrandCardDef extends SpecificBrandDef {
     following: boolean;
@@ -28,11 +29,20 @@ export const BrandCard = (props: BrandCardDef) => {
                         <p className={style.brandValue}>${props.balance}</p>
                     </div>
                     <div className={style.brandRight}>
-                        <Button
-                            buttonText="follow"
-                            buttonClass={`appButton ${style.brandButton}`}
-                            buttonType="button"
-                        />
+                        {props.following ? (
+                            <Link
+                                to={`brand/${props.index}`}
+                                className={style.brandView}
+                            >
+                                View
+                            </Link>
+                        ) : (
+                            <Button
+                                buttonText="follow"
+                                buttonClass={`appButton ${style.brandButton}`}
+                                buttonType="button"
+                            />
+                        )}
                     </div>
                 </div>
             </div>
