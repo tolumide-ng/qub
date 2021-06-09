@@ -25,6 +25,12 @@ export interface RootState {
         status: StateType;
         error: string | null;
     };
+
+    specificBrandReducer: {
+        brand: SpecificBrandDef;
+        status: StateType;
+        error: string | null;
+    };
 }
 
 export interface StoreActionPropsDefs {

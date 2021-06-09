@@ -58,3 +58,7 @@ export interface RoutePropDef {
     title: string;
     isProtected: boolean;
 }
+
+export interface GetBrandDef {
+    id: number;
+}

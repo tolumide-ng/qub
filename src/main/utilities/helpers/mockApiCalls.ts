@@ -1,6 +1,11 @@
 import { generateBrands } from "../../../staticData/allBrands";
 import { allUsers } from "../../../staticData/allUsers";
-import { SpecificBrandDef, UserDef, UserInfoDef } from "../../commonTypes";
+import {
+    SpecificBrandDef,
+    UserDef,
+    UserInfoDef,
+    GetBrandDef,
+} from "../../commonTypes";
 
 export const authenticateUser = (data: UserDef): object => {
     const userExists = allUsers.find(
@@ -26,4 +31,13 @@ export const createNewUser = (data: UserInfoDef): object => {
 
 export const getAllBrands = (): Array<SpecificBrandDef> => {
     return generateBrands;
+};
+
+export const getSpecificBrand = (data: GetBrandDef): SpecificBrandDef => {
+    const theBrand = generateBrands.find((brand) => brand.index === data.id);
+    if (theBrand) {
+        return theBrand;
+    } else {
+        throw new Error("Brand does not exist");
+    }
 };
