@@ -1,9 +1,13 @@
+import { ThunkDispatch } from "redux-thunk";
+import { Subject, from, connectable } from "rxjs";
+import { multicast } from "rxjs/operators";
 import { SpecificBrandDef } from "../main/commonTypes";
+import { fetchBrandsUpdate } from "../main/store/modules/brands/actions";
 import { allUsers } from "./allUsers";
 
 const letters = "abcdefghijklmnopqrstuvwxwz";
 
-export const generateBrands = ((): Array<SpecificBrandDef> => {
+export const generateBrands = (): Array<SpecificBrandDef> => {
     const allBrands: Array<SpecificBrandDef> = [];
 
     let combined = "";
@@ -26,4 +30,15 @@ export const generateBrands = ((): Array<SpecificBrandDef> => {
     }
 
     return allBrands;
-})();
+};
+
+const source = from(generateBrands());
+const subject = new Subject();
+const multicasted = source.pipe(multicast(subject));
+
+const initateBrandSubscribe = (dispatch: any) => {
+    multicasted.subscribe({
+        next: (newBrands) =>
+            dispatch(fetchBrandsUpdate(newBrands as Array<SpecificBrandDef>)),
+    });
+};

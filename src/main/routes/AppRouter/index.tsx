@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, useLocation } from "react-router";
 import { RoutePropDef } from "../../commonTypes";
 import { AllBrands } from "../../components/Pages/AllBrands";
@@ -88,6 +88,8 @@ const AppRouter = () => {
     useEffect(() => {
         document.title = getName(currentLocation);
     }, [currentLocation]);
+
+    const dispatch = useDispatch();
 
     return (
         <div className="appwide">
