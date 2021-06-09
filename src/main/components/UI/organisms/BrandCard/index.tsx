@@ -3,24 +3,29 @@ import { Button } from "../../atoms/Button";
 import { LoadImg } from "../../atoms/LoadImg";
 import style from "./index.module.css";
 import placeholder from "../../../../assets/images/placeholder.svg";
+import { SpecificBrandDef } from "../../../../commonTypes";
 
-export const BrandCard = () => {
+interface BrandCardDef extends SpecificBrandDef {
+    following: boolean;
+}
+
+export const BrandCard = (props: BrandCardDef) => {
     return (
         <div className={style.brand}>
             <div className={style.brandTop}>
                 <LoadImg
                     loadImg={placeholder}
-                    loadAlt="image showing the brand"
+                    loadAlt={`image showing the logo of  ${props.brandName}`}
                     loadClass={style.brandAvi}
                 />
             </div>
 
             <div className={style.brandBottom}>
-                <p className={style.brandName}>Alan and Breed</p>
+                <p className={style.brandName}>{props.brandName}</p>
                 <div className={style.brandActions}>
                     <div className={style.brandLeft}>
                         <p className={style.brandTitle}>Brand Balance</p>
-                        <p className={style.brandValue}>$200</p>
+                        <p className={style.brandValue}>${props.balance}</p>
                     </div>
                     <div className={style.brandRight}>
                         <Button

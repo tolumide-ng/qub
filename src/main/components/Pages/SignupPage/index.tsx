@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
 import { fetchAuthAction } from "../../../store/modules/auth/actions";
 import { RootState } from "../../../store/modules/types";
+import { useAuth } from "../../../utilities/hooks/useAuth";
 import { Signup } from "../../UI/organisms/Signup";
 import { QubAuthTmp } from "../../UI/templates/QubAuthTmp";
 import styles from "./index.module.css";
@@ -75,20 +75,9 @@ export const SignupPage = (props: SignupPageDef) => {
         );
     };
 
-    const selector = useSelector((state: RootState) => state.authReducer);
-
     const dispatch = useDispatch();
-    const history = useHistory();
 
-    React.useEffect(() => {
-        if (selector.status === "failure" && selector.authError) {
-            setAuthError(selector.authError);
-        }
-
-        if (selector.status === "success") {
-            history.push("/brands");
-        }
-    }, [selector.status]);
+    const { selector } = useAuth({ setError: setAuthError });
 
     return (
         <article className={styles.sPage}>

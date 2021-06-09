@@ -46,12 +46,9 @@ export const LoginPage = () => {
         );
     };
 
-    const selector = useSelector((state: RootState) => state.authReducer);
-
     const dispatch = useDispatch();
-    const history = useHistory();
 
-    useAuth({ setError: setAuthError });
+    const { selector } = useAuth({ setError: setAuthError });
 
     return (
         <article className={style.lPage}>

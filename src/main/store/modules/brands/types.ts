@@ -1,10 +1,10 @@
-import { StateType } from "../../../commonTypes";
+import { SpecificBrandDef, StateType } from "../../../commonTypes";
 import { BRANDS_FAILURE, BRANDS_PENDING, BRANDS_SUCCESS } from "./actionTypes";
 
 export interface BrandsStateDef {
     readonly status: StateType;
     readonly error: string | null;
-    readonly brands: [];
+    readonly brands: Array<SpecificBrandDef>;
 }
 
 export interface BrandsPendingActionDef {

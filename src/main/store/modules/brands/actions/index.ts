@@ -33,7 +33,7 @@ export const fetchBrandsSuccess = (
     payload: {
         status: "success",
         error: null,
-        brands: [],
+        brands,
     },
 });
 

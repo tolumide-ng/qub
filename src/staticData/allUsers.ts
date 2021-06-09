@@ -9,6 +9,13 @@ export const allUsers: Array<UserInfoDef> = [
         role: "admin",
     },
     {
+        firstName: "Mose",
+        lastName: "Ogunks",
+        email: "mose@email.com",
+        password: "password",
+        role: "admin",
+    },
+    {
         firstName: "Ope",
         lastName: "Lukan",
         email: "ope@email.com",
@@ -21,13 +28,6 @@ export const allUsers: Array<UserInfoDef> = [
         email: "yusuf@email.com",
         password: "password",
         role: "user",
-    },
-    {
-        firstName: "Mose",
-        lastName: "Ogunks",
-        email: "mose@email.com",
-        password: "password",
-        role: "admin",
     },
     {
         firstName: "Mide",

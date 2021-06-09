@@ -29,8 +29,8 @@ export interface AuthInputDef {
 export interface SpecificBrandDef {
     brandName: string;
     balance: number;
-    following: boolean;
     index: number;
+    followers: Array<string>;
 }
 
 export type StateType = "rest" | "loading" | "failure" | "success";

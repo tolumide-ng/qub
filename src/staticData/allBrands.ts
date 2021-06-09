@@ -1,4 +1,5 @@
 import { SpecificBrandDef } from "../main/commonTypes";
+import { allUsers } from "./allUsers";
 
 const letters = "abcdefghijklmnopqrstuvwxwz";
 
@@ -14,7 +15,7 @@ export const generateBrands = ((): Array<SpecificBrandDef> => {
             allBrands.push({
                 brandName: combined,
                 balance: i * combined.length,
-                following: false,
+                followers: allUsers.slice(1, 4).map((user) => user.email),
                 index: i,
             });
             combined = "";

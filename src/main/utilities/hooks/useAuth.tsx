@@ -11,8 +11,6 @@ export const useAuth = (props: UseAuthDef) => {
     const selector = useSelector((state: RootState) => state.authReducer);
     const history = useHistory();
 
-    let newRoute = "";
-
     React.useEffect(() => {
         if (selector.status === "failure" && selector.authError) {
             props.setError(selector.authError);
@@ -28,4 +26,8 @@ export const useAuth = (props: UseAuthDef) => {
             }
         }
     }, [selector.status]);
+
+    return {
+        selector,
+    };
 };

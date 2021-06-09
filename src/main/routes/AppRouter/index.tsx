@@ -92,20 +92,21 @@ const AppRouter = () => {
 
     return (
         <div className="appwide">
-            {JSON.stringify(selector)}
-
             <main className="appwide-container">
                 <ErrorBoundary>
                     <Suspense fallback={<LoadingPage />}>
                         <Switch>
                             {allRoutes.map((route, index) =>
                                 route?.isProtected ? (
-                                    <ProtectedRoute {...route} />
+                                    <ProtectedRoute
+                                        {...route}
+                                        key={route.title}
+                                    />
                                 ) : (
                                     <Route
                                         exact={route.exact}
                                         path={route.path}
-                                        key={index}
+                                        key={route.title}
                                     >
                                         {route.component}
                                     </Route>
