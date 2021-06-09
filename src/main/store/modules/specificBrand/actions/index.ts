@@ -9,6 +9,7 @@ import {
 import {
     SpecificBrandFailureActionDef,
     SpecificBrandPendingActionDef,
+    SpecificBrandStateDef,
     SpecificBrandSuccessActionDef,
 } from "../types";
 
@@ -42,6 +43,8 @@ export const fetchSpecificBrandSuccess = (
         brand,
     },
 });
+
+// export const fetchSpecificBrandReset = (brand: SpecificBrandStateDef): Specific
 
 export const fetchSpecificBrandAction =
     (props: StoreActionPropsDefs): AppThunk =>

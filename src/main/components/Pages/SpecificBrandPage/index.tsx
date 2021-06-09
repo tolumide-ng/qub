@@ -4,7 +4,7 @@ import { QubAuthTmp } from "../../UI/templates/QubAuthTmp";
 import { SpecificBrand } from "../../UI/organisms/SpecificBrand";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/modules/types";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { fetchSpecificBrandAction } from "../../../store/modules/specificBrand/actions";
 import { SpecificBrandDef } from "../../../commonTypes";
 
@@ -23,8 +23,13 @@ export const SpecificBrandPage = () => {
     const { id } = params;
     const theId = Number(id);
 
+    const history = useHistory();
+
     React.useEffect(() => {
-        if (selector.status === "rest" || selector.brand.index !== theId) {
+        if (
+            !["success"].includes(selector.status) ||
+            selector.brand.index !== theId
+        ) {
             dispatch(
                 fetchSpecificBrandAction({
                     method: "GET",
@@ -35,16 +40,23 @@ export const SpecificBrandPage = () => {
         }
 
         if (selector.status === "success" && selector.brand.index === theId) {
+            setTheBrand(selector.brand);
         }
     }, [theId, selector.status]);
 
     return (
         <article className={style.spBrand}>
             {JSON.stringify(params)}
-            <QubAuthTmp
-                bodyTitle="Name of the brand"
-                body={<SpecificBrand />}
-            />
+            {selector.status !== "failure" ? (
+                <QubAuthTmp
+                    bodyTitle="Name of the brand"
+                    body={<SpecificBrand />}
+                />
+            ) : (
+                <div className="">
+                    <p>BRAND DOES NOT EXIST</p>
+                </div>
+            )}
         </article>
     );
 };
