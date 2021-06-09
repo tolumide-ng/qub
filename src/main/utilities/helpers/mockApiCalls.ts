@@ -1,10 +1,11 @@
-import { generateBrands } from "../../../staticData/allBrands";
+import { allBrands } from "../../../staticData/allBrands";
 import { allUsers } from "../../../staticData/allUsers";
 import {
     SpecificBrandDef,
     UserDef,
     UserInfoDef,
     GetBrandDef,
+    FollowBrandDef,
 } from "../../commonTypes";
 
 export const authenticateUser = (data: UserDef): object => {
@@ -30,14 +31,40 @@ export const createNewUser = (data: UserInfoDef): object => {
 };
 
 export const getAllBrands = (): Array<SpecificBrandDef> => {
-    return generateBrands;
+    return allBrands;
 };
 
 export const getSpecificBrand = (data: GetBrandDef): SpecificBrandDef => {
-    const theBrand = generateBrands.find((brand) => brand.index === data.id);
+    const theBrand = allBrands.find((brand) => brand.index === data.id);
 
     if (theBrand) {
         return theBrand;
+    } else {
+        throw new Error("Brand does not exist");
+    }
+};
+
+export const followSpecificBrand = (data: FollowBrandDef) => {
+    const theBrand = allBrands.findIndex((brand) => brand.index === data.id);
+
+    if (theBrand >= 0) {
+        allBrands[theBrand] = {
+            ...allBrands[theBrand],
+            followers: [...allBrands[theBrand].followers, data.email],
+        };
+    } else {
+        throw new Error("Brand does not exist");
+    }
+};
+
+export const redeemPoints = (data: GetBrandDef) => {
+    const theBrand = allBrands.findIndex((brand) => brand.index === data.id);
+    if (theBrand >= 0) {
+        const toDeduct = allBrands[theBrand].balance * (75 / 100);
+        allBrands[theBrand] = {
+            ...allBrands[theBrand],
+            balance: allBrands[theBrand].balance - toDeduct,
+        };
     } else {
         throw new Error("Brand does not exist");
     }

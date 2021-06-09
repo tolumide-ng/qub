@@ -1,5 +1,10 @@
 import { SpecificBrandDef, StateType } from "../../../commonTypes";
-import { BRANDS_FAILURE, BRANDS_PENDING, BRANDS_SUCCESS } from "./actionTypes";
+import {
+    BRANDS_FAILURE,
+    BRANDS_PENDING,
+    BRANDS_SUCCESS,
+    BRANDS_UPDATE,
+} from "./actionTypes";
 
 export interface BrandsStateDef {
     readonly status: StateType;
@@ -22,7 +27,13 @@ export interface BrandsSuccessActionDef {
     payload: BrandsStateDef;
 }
 
+export interface BrandsUpdateActionDef {
+    type: typeof BRANDS_UPDATE;
+    payload: BrandsStateDef;
+}
+
 export type BrandsActionType =
     | BrandsPendingActionDef
     | BrandsFailureActionDef
-    | BrandsSuccessActionDef;
+    | BrandsSuccessActionDef
+    | BrandsUpdateActionDef;

@@ -33,7 +33,7 @@ export interface SpecificBrandDef {
     followers: Array<string>;
 }
 
-export type StateType = "rest" | "loading" | "failure" | "success";
+export type StateType = "rest" | "loading" | "failure" | "success" | "update";
 
 export interface UserDef {
     email: string;
@@ -61,4 +61,9 @@ export interface RoutePropDef {
 
 export interface GetBrandDef {
     id: number;
+}
+
+export interface FollowBrandDef {
+    id: number;
+    email: string;
 }

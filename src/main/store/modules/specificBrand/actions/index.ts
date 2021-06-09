@@ -1,5 +1,8 @@
 import { GetBrandDef, SpecificBrandDef } from "../../../../commonTypes";
-import { getSpecificBrand } from "../../../../utilities/helpers/mockApiCalls";
+import {
+    getSpecificBrand,
+    redeemPoints,
+} from "../../../../utilities/helpers/mockApiCalls";
 import { AppThunk, StoreActionPropsDefs } from "../../types";
 import {
     SPECIFIC_BRAND_FAILURE,
@@ -9,7 +12,6 @@ import {
 import {
     SpecificBrandFailureActionDef,
     SpecificBrandPendingActionDef,
-    SpecificBrandStateDef,
     SpecificBrandSuccessActionDef,
 } from "../types";
 
@@ -44,15 +46,20 @@ export const fetchSpecificBrandSuccess = (
     },
 });
 
-// export const fetchSpecificBrandReset = (brand: SpecificBrandStateDef): Specific
-
 export const fetchSpecificBrandAction =
     (props: StoreActionPropsDefs): AppThunk =>
     async (dispatch) => {
         try {
             dispatch(fetchSpecificBrandPending());
+
+            if (props.method === "PATCH") {
+                redeemPoints(props.payload as GetBrandDef);
+            }
+
             const response = getSpecificBrand(props.payload as GetBrandDef);
-            dispatch(fetchSpecificBrandSuccess(response));
+            setTimeout(() => {
+                dispatch(fetchSpecificBrandSuccess(response));
+            }, 10);
         } catch (error) {
             dispatch(fetchSpecificBrandFailure(error.message));
         }

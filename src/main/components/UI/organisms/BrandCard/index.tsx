@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 interface BrandCardDef extends SpecificBrandDef {
     following: boolean;
+    handleFollow: (id: number) => void;
 }
 
 export const BrandCard = (props: BrandCardDef) => {
@@ -41,6 +42,9 @@ export const BrandCard = (props: BrandCardDef) => {
                                 buttonText="follow"
                                 buttonClass={`appButton ${style.brandButton}`}
                                 buttonType="button"
+                                handleClick={() =>
+                                    props.handleFollow(props.index)
+                                }
                             />
                         )}
                     </div>

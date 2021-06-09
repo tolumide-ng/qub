@@ -20,12 +20,11 @@ export const SpecificBrandPage = () => {
     const [theBrand, setTheBrand] = React.useState<
         SpecificBrandDef | undefined
     >(undefined);
+    const [disableButton, setDisableButton] = React.useState(false);
 
     const params: ParamsDef = useParams();
     const { id } = params;
     const theId = Number(id);
-
-    const history = useHistory();
 
     React.useEffect(() => {
         if (
@@ -46,12 +45,29 @@ export const SpecificBrandPage = () => {
         }
     }, [theId, selector.status]);
 
+    const handleRedeemPoints = (id: number) => {
+        dispatch(
+            fetchSpecificBrandAction({
+                method: "PATCH",
+                path: "brand",
+                payload: { id: theId },
+            })
+        );
+        setDisableButton(true);
+    };
+
     return (
         <article className={style.spBrand}>
             {selector.status === "success" && theBrand ? (
                 <QubAuthTmp
                     bodyTitle={`Brand Name: ${theBrand.brandName}`}
-                    body={<SpecificBrand {...theBrand} />}
+                    body={
+                        <SpecificBrand
+                            {...theBrand}
+                            handleRedeemPoints={handleRedeemPoints}
+                            disableButton={disableButton}
+                        />
+                    }
                 />
             ) : (
                 <></>
