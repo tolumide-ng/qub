@@ -32,6 +32,7 @@ export const Login = (props: LoginDef) => {
                         onChange={props.handleChange}
                         inputLabelName={option.label}
                         inputLabelClass={style.loginLabel}
+                        key={option.label}
                     />
                 ))}
 

@@ -54,6 +54,10 @@
     border-radius: var(--app-br);
 }
 
+.brandView {
+    color: var(--color-cerise);
+}
+
 .brandName {
     text-align: center;
 }

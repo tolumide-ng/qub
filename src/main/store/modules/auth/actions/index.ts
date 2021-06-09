@@ -56,10 +56,7 @@ export const fetchAuthAction =
                 const response = createNewUser(props.payload as UserInfoDef);
                 dispatch(fetchAuthSuccess(response));
             }
-
-            console.log("HERE NOW>>>>>>>>>>>>>");
         } catch (error) {
-            console.log("THERE WAS AN ERROR ON THE AUTH MGMT", error);
             dispatch(fetchAuthFailure(error.message));
         }
     };

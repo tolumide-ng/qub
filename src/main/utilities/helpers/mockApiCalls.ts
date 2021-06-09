@@ -1,5 +1,11 @@
+import { generateBrands } from "../../../staticData/allBrands";
 import { allUsers } from "../../../staticData/allUsers";
-import { UserDef, UserInfoDef } from "../../commonTypes";
+import {
+    SpecificBrandDef,
+    UserDef,
+    UserInfoDef,
+    GetBrandDef,
+} from "../../commonTypes";
 
 export const authenticateUser = (data: UserDef): object => {
     const userExists = allUsers.find(
@@ -14,12 +20,25 @@ export const authenticateUser = (data: UserDef): object => {
 
 export const createNewUser = (data: UserInfoDef): object => {
     const userExists = allUsers.find((user) => user.email === data.email);
-    console.log("DOES THE USER EXKST???????", userExists);
 
     if (userExists) {
         throw Error("Email already exists");
     } else {
         allUsers.push(data);
         return { ...data, password: "" };
+    }
+};
+
+export const getAllBrands = (): Array<SpecificBrandDef> => {
+    return generateBrands;
+};
+
+export const getSpecificBrand = (data: GetBrandDef): SpecificBrandDef => {
+    const theBrand = generateBrands.find((brand) => brand.index === data.id);
+
+    if (theBrand) {
+        return theBrand;
+    } else {
+        throw new Error("Brand does not exist");
     }
 };
