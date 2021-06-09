@@ -1,4 +1,4 @@
-import { generateBrands } from "../../../staticData/allBrands";
+import { allBrands } from "../../../staticData/allBrands";
 import { allUsers } from "../../../staticData/allUsers";
 import {
     SpecificBrandDef,
@@ -30,11 +30,11 @@ export const createNewUser = (data: UserInfoDef): object => {
 };
 
 export const getAllBrands = (): Array<SpecificBrandDef> => {
-    return generateBrands;
+    return allBrands;
 };
 
 export const getSpecificBrand = (data: GetBrandDef): SpecificBrandDef => {
-    const theBrand = generateBrands.find((brand) => brand.index === data.id);
+    const theBrand = allBrands.find((brand) => brand.index === data.id);
 
     if (theBrand) {
         return theBrand;

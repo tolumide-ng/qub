@@ -2,43 +2,67 @@ import { ThunkDispatch } from "redux-thunk";
 import { Subject, from, connectable } from "rxjs";
 import { multicast } from "rxjs/operators";
 import { SpecificBrandDef } from "../main/commonTypes";
-import { fetchBrandsUpdate } from "../main/store/modules/brands/actions";
 import { allUsers } from "./allUsers";
 
-const letters = "abcdefghijklmnopqrstuvwxwz";
-
-export const generateBrands = (): Array<SpecificBrandDef> => {
-    const allBrands: Array<SpecificBrandDef> = [];
-
-    let combined = "";
-
-    for (let i = 0; i < letters.length; i++) {
-        combined += letters[i];
-
-        if (combined.length === 3 || i == letters.length - 1) {
-            allBrands.push({
-                brandName: combined,
-                balance: i * combined.length,
-                followers:
-                    i % 2 === 0
-                        ? allUsers.slice(1, 4).map((user) => user.email)
-                        : [],
-                index: i,
-            });
-            combined = "";
-        }
-    }
-
-    return allBrands;
-};
-
-const source = from(generateBrands());
-const subject = new Subject();
-const multicasted = source.pipe(multicast(subject));
-
-const initateBrandSubscribe = (dispatch: any) => {
-    multicasted.subscribe({
-        next: (newBrands) =>
-            dispatch(fetchBrandsUpdate(newBrands as Array<SpecificBrandDef>)),
-    });
-};
+export const allBrands: Array<SpecificBrandDef> = [
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 0,
+        followers: [allUsers[2].email],
+    },
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 1,
+        followers: [allUsers[2].email, allUsers[3].email, allUsers[4].email],
+    },
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 2,
+        followers: [allUsers[2].email, allUsers[3].email, allUsers[4].email],
+    },
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 3,
+        followers: [allUsers[2].email],
+    },
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 4,
+        followers: [allUsers[2].email, allUsers[3].email, allUsers[4].email],
+    },
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 5,
+        followers: [allUsers[2].email],
+    },
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 6,
+        followers: [allUsers[2].email, allUsers[3].email, allUsers[4].email],
+    },
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 7,
+        followers: [allUsers[2].email],
+    },
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 8,
+        followers: [allUsers[2].email],
+    },
+    {
+        brandName: "abc",
+        balance: 300,
+        index: 9,
+        followers: [allUsers[2].email, allUsers[5].email, allUsers[4].email],
+    },
+];
