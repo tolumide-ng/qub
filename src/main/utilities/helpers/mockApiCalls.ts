@@ -7,6 +7,7 @@ import {
     GetBrandDef,
     FollowBrandDef,
     UserCreateDef,
+    GetBrandByNameDef,
 } from "../../commonTypes";
 
 export const authenticateUser = (data: UserDef): object => {
@@ -54,8 +55,15 @@ export const getAllBrands = (): Array<SpecificBrandDef> => {
 export const getSpecificBrand = (data: GetBrandDef): SpecificBrandDef => {
     const theBrand = allBrands.find((brand) => brand.index === data.id);
 
-    console.log("!!!!!!!!!!!!!!!!!!!!!!", theBrand);
-    console.log("====================================", allBrands);
+    if (theBrand) {
+        return theBrand;
+    } else {
+        throw new Error("Brand does not exist");
+    }
+};
+
+export const getBrandByName = (data: GetBrandByNameDef) => {
+    const theBrand = allBrands.find((brand) => brand.brandName === data.name);
 
     if (theBrand) {
         return theBrand;

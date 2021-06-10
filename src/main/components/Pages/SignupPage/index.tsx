@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthAction } from "../../../store/modules/auth/actions";
-import { RootState } from "../../../store/modules/types";
 import { useAuth } from "../../../utilities/hooks/useAuth";
 import { Signup } from "../../UI/organisms/Signup";
 import { QubAuthTmp } from "../../UI/templates/QubAuthTmp";

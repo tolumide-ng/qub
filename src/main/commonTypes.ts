@@ -74,6 +74,10 @@ export interface GetBrandDef {
     id: number;
 }
 
+export interface GetBrandByNameDef {
+    name: string;
+}
+
 export interface FollowBrandDef {
     id: number;
     email: string;
