@@ -52,9 +52,14 @@ export const AllBrands = () => {
                         followers={brand.followers}
                         balance={brand.balance}
                         index={brand.index}
-                        following={brand.followers.includes(
-                            authSelector.user.email
-                        )}
+                        following={
+                            brand.followers.find(
+                                (follow) =>
+                                    follow.email === authSelector.user.email
+                            )
+                                ? true
+                                : false
+                        }
                         handleFollow={handleFollow}
                     />
                 ))}

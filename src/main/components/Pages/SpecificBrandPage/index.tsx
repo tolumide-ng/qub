@@ -16,6 +16,8 @@ export const SpecificBrandPage = () => {
     const selector = useSelector(
         (state: RootState) => state.specificBrandReducer
     );
+    const authSelector = useSelector((state: RootState) => state.authReducer);
+
     const dispatch = useDispatch();
     const [theBrand, setTheBrand] = React.useState<
         SpecificBrandDef | undefined
@@ -50,7 +52,7 @@ export const SpecificBrandPage = () => {
             fetchSpecificBrandAction({
                 method: "PATCH",
                 path: "brand",
-                payload: { id: theId },
+                payload: { id: theId, email: authSelector.user.email },
             })
         );
         setDisableButton(true);
@@ -63,9 +65,22 @@ export const SpecificBrandPage = () => {
                     bodyTitle={`Brand Name: ${theBrand.brandName}`}
                     body={
                         <SpecificBrand
-                            {...theBrand}
+                            brandName={theBrand.brandName}
+                            followers={theBrand.followers}
+                            index={theBrand.index}
                             handleRedeemPoints={handleRedeemPoints}
-                            disableButton={disableButton}
+                            disableButton={
+                                theBrand.followers.find(
+                                    (follow) =>
+                                        follow.email === authSelector.user.email
+                                )?.redeemed ?? false
+                            }
+                            balance={
+                                theBrand.followers.find(
+                                    (follow) =>
+                                        follow.email === authSelector.user.email
+                                )?.points ?? 0
+                            }
                         />
                     }
                 />

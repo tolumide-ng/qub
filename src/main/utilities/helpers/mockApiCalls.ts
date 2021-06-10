@@ -50,21 +50,40 @@ export const followSpecificBrand = (data: FollowBrandDef) => {
     if (theBrand >= 0) {
         allBrands[theBrand] = {
             ...allBrands[theBrand],
-            followers: [...allBrands[theBrand].followers, data.email],
+            followers: [
+                ...allBrands[theBrand].followers,
+                {
+                    email: data.email,
+                    points: allBrands[theBrand].balance,
+                    redeemed: false,
+                },
+            ],
         };
     } else {
         throw new Error("Brand does not exist");
     }
 };
 
-export const redeemPoints = (data: GetBrandDef) => {
+export const redeemPoints = (data: FollowBrandDef) => {
     const theBrand = allBrands.findIndex((brand) => brand.index === data.id);
+
     if (theBrand >= 0) {
-        const toDeduct = allBrands[theBrand].balance * (75 / 100);
-        allBrands[theBrand] = {
-            ...allBrands[theBrand],
-            balance: allBrands[theBrand].balance - toDeduct,
-        };
+        const theUser = allBrands[theBrand].followers.findIndex(
+            (user) => user.email === data.email
+        );
+
+        if (theUser >= 0) {
+            const originalPoints =
+                allBrands[theBrand].followers[theUser].points;
+
+            const toDeduct = originalPoints * (75 / 100);
+
+            allBrands[theBrand].followers[theUser] = {
+                ...allBrands[theBrand].followers[theUser],
+                points: originalPoints - toDeduct,
+                redeemed: true,
+            };
+        }
     } else {
         throw new Error("Brand does not exist");
     }

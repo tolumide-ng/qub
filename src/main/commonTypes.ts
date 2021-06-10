@@ -30,7 +30,7 @@ export interface SpecificBrandDef {
     brandName: string;
     balance: number;
     index: number;
-    followers: Array<string>;
+    followers: Array<{ email: string; points: number; redeemed: boolean }>;
 }
 
 export type StateType = "rest" | "loading" | "failure" | "success" | "update";
