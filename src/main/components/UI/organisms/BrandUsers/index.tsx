@@ -21,18 +21,10 @@ export const BrandUsers = (props: BrandUsersDef) => {
             </thead>
 
             <tbody className={style.butBody}>
-                <tr className={style.butRow}>
-                    <td className={style.butCell}>1</td>
-                    <td className={style.butCell}>firstName lastName</td>
-                    <td className={style.butCell}>290 points</td>
-                    <td className={style.butCell}>
-                        <Button buttonClass="" buttonText="Award Points" />
-                    </td>
-                </tr>
                 {props.followers.map((follow, index) => (
                     <tr className={style.butRow} key={follow.email}>
                         <td className={style.butCell}>{index}</td>
-                        <td className={style.butCell}>firstName lastName</td>
+                        <td className={style.butCell}>{follow.email}</td>
                         <td className={style.butCell}>
                             {follow.points} points
                         </td>

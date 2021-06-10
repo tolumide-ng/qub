@@ -21,16 +21,20 @@ export const BrandUsersPage = () => {
 
     React.useEffect(() => {
         if (!["success", "loading"].includes(brandSelector.status)) {
-            const id = getBrandByName({
-                name: String(authSelector.user.brand),
-            });
+            let id = authSelector.user.brand;
+
+            if (typeof id === "string") {
+                id = getBrandByName({
+                    name: String(authSelector.user.brand),
+                })?.index;
+            }
 
             dispatch(
                 fetchSpecificBrandAction({
                     method: "GET",
                     path: "brand",
                     payload: {
-                        id: id.index,
+                        id,
                     },
                 })
             );
@@ -45,6 +49,15 @@ export const BrandUsersPage = () => {
         <article>
             {brandSelector.status === "success" && theBrand ? (
                 <BrandUsers {...theBrand} />
+            ) : (
+                <></>
+            )}
+
+            {brandSelector.status === "success" &&
+            !theBrand?.followers?.length ? (
+                <p className={style.bUsersCenter}>
+                    You do not have any followers at the moment
+                </p>
             ) : (
                 <></>
             )}
