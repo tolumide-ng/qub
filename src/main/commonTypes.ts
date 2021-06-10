@@ -46,6 +46,7 @@ export interface UserInfoDef {
     email: string;
     password: string;
     role: string;
+    brand?: string;
 }
 
 export type RoutesType = "admin" | "user" | "all";

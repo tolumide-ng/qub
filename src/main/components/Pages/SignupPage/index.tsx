@@ -35,7 +35,13 @@ const options = [
     {
         label: "Brand Name",
         name: "brand",
-        type: "brand",
+        type: "text",
+        required: true,
+    },
+    {
+        label: "Max Points",
+        name: "balance",
+        type: "number",
         required: true,
     },
 ];
@@ -45,12 +51,13 @@ interface SignupPageDef {
 }
 
 export const SignupPage = (props: SignupPageDef) => {
-    const [user, setUser] = React.useState<{ [key: string]: string }>({
+    const [user, setUser] = React.useState<{ [key: string]: string | number }>({
         firstName: "",
         lastName: "",
         email: "",
         password: "",
         brand: "",
+        balance: 200,
     });
 
     const [authError, setAuthError] = React.useState<string | null>(null);
@@ -66,11 +73,21 @@ export const SignupPage = (props: SignupPageDef) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setAuthError(null);
+        const payload = { ...user };
+        if (props.brands) {
+            payload.role = "admin";
+        }
+
+        if (!props.brands) {
+            payload.user = "user";
+            delete payload.brand;
+            delete payload.balance;
+        }
         dispatch(
             fetchAuthAction({
                 path: "signup",
                 method: "GET",
-                payload: { ...user, role: props.brands ? "admin" : "user" },
+                payload,
             })
         );
     };

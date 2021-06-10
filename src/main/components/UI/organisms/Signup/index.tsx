@@ -10,7 +10,7 @@ interface SignupDef {
     handleSubmit: (e: React.FormEvent) => void;
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     user: {
-        [key: string]: string;
+        [key: string]: string | number;
     };
     error: string | null;
     loadStatus: StateType;
@@ -28,7 +28,7 @@ export const Signup = (props: SignupDef) => {
                         inputPlaceholder=""
                         inputContClass={""}
                         inputName={option.name}
-                        inputValue={props.user[option.name]}
+                        inputValue={String(props.user[option.name])}
                         onChange={props.handleChange}
                         inputLabelName={option.label}
                         inputLabelClass={style.signupLabel}
