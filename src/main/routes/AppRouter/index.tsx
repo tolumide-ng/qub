@@ -35,7 +35,7 @@ export const allRoutes: Array<RoutePropDef> = [
         type: "all",
         exact: true,
         title: "Brand Signup",
-        isProtected: true,
+        isProtected: false,
     },
     {
         path: "/brands",

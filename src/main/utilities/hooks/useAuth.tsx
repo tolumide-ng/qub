@@ -17,6 +17,7 @@ export const useAuth = (props: UseAuthDef) => {
         }
 
         if (selector.status === "success") {
+            console.log("THE TYPE OF USER WE HAVE>>>>>>", selector.user);
             if (selector.user.role === "user") {
                 history.push("/brands");
             }

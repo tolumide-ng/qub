@@ -7,6 +7,7 @@ export const allUsers: Array<UserInfoDef> = [
         email: "mich@email.com",
         password: "password",
         role: "admin",
+        brand: 2,
     },
     {
         firstName: "Mose",
@@ -14,6 +15,7 @@ export const allUsers: Array<UserInfoDef> = [
         email: "mose@email.com",
         password: "password",
         role: "admin",
+        brand: 4,
     },
     {
         firstName: "Ope",

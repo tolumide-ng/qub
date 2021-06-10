@@ -16,11 +16,12 @@ export const SpecificBrandPage = () => {
     const selector = useSelector(
         (state: RootState) => state.specificBrandReducer
     );
+    const authSelector = useSelector((state: RootState) => state.authReducer);
+
     const dispatch = useDispatch();
     const [theBrand, setTheBrand] = React.useState<
         SpecificBrandDef | undefined
     >(undefined);
-    const [disableButton, setDisableButton] = React.useState(false);
 
     const params: ParamsDef = useParams();
     const { id } = params;
@@ -28,7 +29,7 @@ export const SpecificBrandPage = () => {
 
     React.useEffect(() => {
         if (
-            !["success"].includes(selector.status) ||
+            !["success", "loading"].includes(selector.status) ||
             selector.brand.index !== theId
         ) {
             dispatch(
@@ -50,10 +51,9 @@ export const SpecificBrandPage = () => {
             fetchSpecificBrandAction({
                 method: "PATCH",
                 path: "brand",
-                payload: { id: theId },
+                payload: { id: theId, email: authSelector.user.email },
             })
         );
-        setDisableButton(true);
     };
 
     return (
@@ -63,9 +63,22 @@ export const SpecificBrandPage = () => {
                     bodyTitle={`Brand Name: ${theBrand.brandName}`}
                     body={
                         <SpecificBrand
-                            {...theBrand}
+                            brandName={theBrand.brandName}
+                            followers={theBrand.followers}
+                            index={theBrand.index}
                             handleRedeemPoints={handleRedeemPoints}
-                            disableButton={disableButton}
+                            disableButton={
+                                theBrand.followers.find(
+                                    (follow) =>
+                                        follow.email === authSelector.user.email
+                                )?.redeemed ?? false
+                            }
+                            balance={
+                                theBrand.followers.find(
+                                    (follow) =>
+                                        follow.email === authSelector.user.email
+                                )?.points ?? 0
+                            }
                         />
                     }
                 />

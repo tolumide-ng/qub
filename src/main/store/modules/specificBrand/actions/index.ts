@@ -1,4 +1,8 @@
-import { GetBrandDef, SpecificBrandDef } from "../../../../commonTypes";
+import {
+    FollowBrandDef,
+    GetBrandDef,
+    SpecificBrandDef,
+} from "../../../../commonTypes";
 import {
     getSpecificBrand,
     redeemPoints,
@@ -53,13 +57,13 @@ export const fetchSpecificBrandAction =
             dispatch(fetchSpecificBrandPending());
 
             if (props.method === "PATCH") {
-                redeemPoints(props.payload as GetBrandDef);
+                redeemPoints(props.payload as FollowBrandDef);
             }
 
             const response = getSpecificBrand(props.payload as GetBrandDef);
             setTimeout(() => {
                 dispatch(fetchSpecificBrandSuccess(response));
-            }, 10);
+            }, 5);
         } catch (error) {
             dispatch(fetchSpecificBrandFailure(error.message));
         }

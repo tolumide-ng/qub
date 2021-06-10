@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthAction } from "../../../store/modules/auth/actions";
-import { RootState } from "../../../store/modules/types";
 import { useAuth } from "../../../utilities/hooks/useAuth";
 import { Signup } from "../../UI/organisms/Signup";
 import { QubAuthTmp } from "../../UI/templates/QubAuthTmp";
@@ -35,7 +34,13 @@ const options = [
     {
         label: "Brand Name",
         name: "brand",
-        type: "brand",
+        type: "text",
+        required: true,
+    },
+    {
+        label: "Max Points",
+        name: "balance",
+        type: "number",
         required: true,
     },
 ];
@@ -45,12 +50,13 @@ interface SignupPageDef {
 }
 
 export const SignupPage = (props: SignupPageDef) => {
-    const [user, setUser] = React.useState<{ [key: string]: string }>({
+    const [user, setUser] = React.useState<{ [key: string]: string | number }>({
         firstName: "",
         lastName: "",
         email: "",
         password: "",
         brand: "",
+        balance: 200,
     });
 
     const [authError, setAuthError] = React.useState<string | null>(null);
@@ -66,11 +72,22 @@ export const SignupPage = (props: SignupPageDef) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setAuthError(null);
+        const payload = { ...user };
+        if (props.brands) {
+            payload.role = "admin";
+        }
+
+        if (!props.brands) {
+            payload.role = "user";
+            delete payload.brand;
+            delete payload.balance;
+        }
         dispatch(
             fetchAuthAction({
                 path: "signup",
                 method: "GET",
-                payload: { ...user, role: props.brands ? "admin" : "user" },
+                payload,
+                params: {},
             })
         );
     };
