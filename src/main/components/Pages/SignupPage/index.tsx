@@ -79,7 +79,7 @@ export const SignupPage = (props: SignupPageDef) => {
         }
 
         if (!props.brands) {
-            payload.user = "user";
+            payload.role = "user";
             delete payload.brand;
             delete payload.balance;
         }
@@ -88,6 +88,7 @@ export const SignupPage = (props: SignupPageDef) => {
                 path: "signup",
                 method: "GET",
                 payload,
+                params: {},
             })
         );
     };

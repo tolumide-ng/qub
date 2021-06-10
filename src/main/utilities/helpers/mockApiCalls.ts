@@ -6,6 +6,7 @@ import {
     UserInfoDef,
     GetBrandDef,
     FollowBrandDef,
+    UserCreateDef,
 } from "../../commonTypes";
 
 export const authenticateUser = (data: UserDef): object => {
@@ -19,13 +20,29 @@ export const authenticateUser = (data: UserDef): object => {
     throw new Error("Email and Password does not match");
 };
 
-export const createNewUser = (data: UserInfoDef): object => {
+export const createNewUser = (data: UserCreateDef): object => {
     const userExists = allUsers.find((user) => user.email === data.email);
 
     if (userExists) {
         throw Error("Email already exists");
     } else {
-        allUsers.push(data);
+        if (data.balance >= 0 && data.brand && data.role === "admin") {
+            allBrands.push({
+                brandName: data.brand,
+                balance: data.balance,
+                followers: [],
+                index: allBrands.length,
+            });
+
+            const modifiedData = { ...data, brand: allBrands.length - 1 };
+            allUsers.push(modifiedData);
+        } else {
+            const { firstName, lastName, email, password, role } = data;
+            const modifiedData = { firstName, lastName, email, password, role };
+
+            allUsers.push(modifiedData);
+        }
+
         return { ...data, password: "" };
     }
 };
@@ -36,6 +53,9 @@ export const getAllBrands = (): Array<SpecificBrandDef> => {
 
 export const getSpecificBrand = (data: GetBrandDef): SpecificBrandDef => {
     const theBrand = allBrands.find((brand) => brand.index === data.id);
+
+    console.log("!!!!!!!!!!!!!!!!!!!!!!", theBrand);
+    console.log("====================================", allBrands);
 
     if (theBrand) {
         return theBrand;

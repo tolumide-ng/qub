@@ -22,7 +22,6 @@ export const SpecificBrandPage = () => {
     const [theBrand, setTheBrand] = React.useState<
         SpecificBrandDef | undefined
     >(undefined);
-    const [disableButton, setDisableButton] = React.useState(false);
 
     const params: ParamsDef = useParams();
     const { id } = params;
@@ -30,7 +29,7 @@ export const SpecificBrandPage = () => {
 
     React.useEffect(() => {
         if (
-            !["success"].includes(selector.status) ||
+            !["success", "loading"].includes(selector.status) ||
             selector.brand.index !== theId
         ) {
             dispatch(
@@ -55,7 +54,6 @@ export const SpecificBrandPage = () => {
                 payload: { id: theId, email: authSelector.user.email },
             })
         );
-        setDisableButton(true);
     };
 
     return (

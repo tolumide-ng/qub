@@ -46,7 +46,17 @@ export interface UserInfoDef {
     email: string;
     password: string;
     role: string;
-    brand?: string;
+    brand?: number;
+}
+
+export interface UserCreateDef {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    role: string;
+    brand: string;
+    balance: number;
 }
 
 export type RoutesType = "admin" | "user" | "all";

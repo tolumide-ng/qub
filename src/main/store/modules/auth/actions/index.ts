@@ -1,4 +1,4 @@
-import { UserDef, UserInfoDef } from "../../../../commonTypes";
+import { UserCreateDef, UserDef, UserInfoDef } from "../../../../commonTypes";
 import {
     authenticateUser,
     createNewUser,
@@ -53,7 +53,7 @@ export const fetchAuthAction =
             }
 
             if (props.path === "signup") {
-                const response = createNewUser(props.payload as UserInfoDef);
+                const response = createNewUser(props.payload as UserCreateDef);
                 dispatch(fetchAuthSuccess(response));
             }
         } catch (error) {

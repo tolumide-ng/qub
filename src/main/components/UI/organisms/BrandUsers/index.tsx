@@ -1,8 +1,11 @@
 import * as React from "react";
 import { Button } from "../../atoms/Button";
+import { SpecificBrandDef } from "../../../../commonTypes";
 import style from "./index.module.css";
 
-export const BrandUsers = () => {
+interface BrandUsersDef extends SpecificBrandDef {}
+
+export const BrandUsers = (props: BrandUsersDef) => {
     return (
         <table className={style.but}>
             <caption className={style.butCaption}>
@@ -26,22 +29,18 @@ export const BrandUsers = () => {
                         <Button buttonClass="" buttonText="Award Points" />
                     </td>
                 </tr>
-                <tr className={style.butRow}>
-                    <td className={style.butCell}>2</td>
-                    <td className={style.butCell}>firstName lastName</td>
-                    <td className={style.butCell}>290 points</td>
-                    <td className={style.butCell}>
-                        <Button buttonClass="" buttonText="Award Points" />
-                    </td>
-                </tr>
-                <tr className={style.butRow}>
-                    <td className={style.butCell}>3</td>
-                    <td className={style.butCell}>firstName lastName</td>
-                    <td className={style.butCell}>290 points</td>
-                    <td className={style.butCell}>
-                        <Button buttonClass="" buttonText="Award Points" />
-                    </td>
-                </tr>
+                {props.followers.map((follow, index) => (
+                    <tr className={style.butRow} key={follow.email}>
+                        <td className={style.butCell}>{index}</td>
+                        <td className={style.butCell}>firstName lastName</td>
+                        <td className={style.butCell}>
+                            {follow.points} points
+                        </td>
+                        <td className={style.butCell}>
+                            <Button buttonClass="" buttonText="Award Points" />
+                        </td>
+                    </tr>
+                ))}
             </tbody>
         </table>
     );
